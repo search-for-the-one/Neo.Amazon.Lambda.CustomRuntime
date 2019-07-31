@@ -12,7 +12,7 @@ namespace Neo.Amazon.Lambda.CustomRuntime
     {
         public async Task Run()
         {
-            using (var handlerWrapper = HandlerWrapper.GetHandlerWrapper(FunctionHandler(this), new JsonSerializer()))
+            using (var handlerWrapper = HandlerWrapper.GetHandlerWrapper(GetFunctionHandler(), new JsonSerializer()))
             {
                 using (var bootstrap = new LambdaBootstrap(handlerWrapper))
                 {
@@ -21,7 +21,6 @@ namespace Neo.Amazon.Lambda.CustomRuntime
             }
         }
 
-        private static Func<ApplicationLoadBalancerRequest, ILambdaContext, Task<ApplicationLoadBalancerResponse>> FunctionHandler(ApplicationLoadBalancerFunction self) => 
-            self.FunctionHandlerAsync;
+        private Func<ApplicationLoadBalancerRequest, ILambdaContext, Task<ApplicationLoadBalancerResponse>> GetFunctionHandler() => FunctionHandlerAsync;
     }
 }
