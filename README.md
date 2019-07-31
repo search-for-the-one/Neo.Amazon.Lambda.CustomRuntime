@@ -26,7 +26,7 @@ Then change your `LocalEntryPoint` class as follows.
     {
         public static async Task Main(string[] args)
         {
-            if (LambdaRuntime.IsRunning)
+            if (Neo.Amazon.Lambda.CustomRuntime.LambdaRuntime.IsRunning)
                 await new LambdaEntryPoint().Run();
             else
                 await BuildWebHost(args).RunAsync();
