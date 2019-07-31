@@ -2,6 +2,8 @@
 
 This library allows you to easily create an AWS lambda with custom runtime with .net core.
 
+`dotnet add package Neo2.Amazon.Lambda.CustomRuntime`
+
 ## Usage
 
 Your `LambdaEntryPoint` class should derive from `Neo.Amazon.Lambda.CustomRuntime.ApplicationLoadBalancerFunction` if you're using ALB, or `Neo.Amazon.Lambda.CustomRuntime.APIGatewayProxyFunction` if you're using API Gateway for your lambda.
