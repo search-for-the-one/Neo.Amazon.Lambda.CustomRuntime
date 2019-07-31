@@ -6,11 +6,11 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <Version>1.0.0</Version>
     <Authors>Neo</Authors>
-    <PackageTags>DependencyInjection</PackageTags>
+    <PackageTags>AWS Lambda Custom Runtime</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageId>Neo2.Extensions.DependencyInjection</PackageId>
-    <Product>Neo2.Extensions.DependencyInjection</Product>
+    <PackageId>Neo2.Amazon.Lambda.CustomRuntime</PackageId>
+    <Product>Neo2.Amazon.Lambda.CustomRuntime</Product>
     <Company>Neo</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/search-for-the-one/Neo.Amazon.Lambda.CustomRuntime</PackageProjectUrl>
