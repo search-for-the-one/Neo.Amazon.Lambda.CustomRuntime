@@ -68,3 +68,15 @@ In your `aws-lambda-tools-defaults.json` file, you'll need to add the following 
 
 After publishing your lambda, you'll need to change the **"Runtime"** settings of your lambda to ***"Custom Runtime"***. Function handler is not required for custom runtimes.
 
+Alternatively, you can change the settings in the `serverless.template` file if you are familiar with cloudformation scripts.
+
+```
+    "Resources" : {
+        "AspNetCoreFunction" : {
+            "Type" : "AWS::Serverless::Function",
+            "Properties": {
+                "Handler": "not_required",
+                "Runtime": "provided",
+                ...
+```
+
