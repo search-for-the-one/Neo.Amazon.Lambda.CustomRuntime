@@ -1,13 +1,21 @@
 ﻿# Neo.Amazon.Lambda.CustomRuntime
 
-This library allows you to easily create an AWS lambda with custom runtime with .net core.
+This library allows you to easily create an AWS lambda serverless application with custom runtime with .net core.
 
 `dotnet add package Neo2.Amazon.Lambda.CustomRuntime`
 
 ## Usage
 
-Your `LambdaEntryPoint` class should derive from `Neo.Amazon.Lambda.CustomRuntime.ApplicationLoadBalancerFunction` if you're using ALB, or `Neo.Amazon.Lambda.CustomRuntime.APIGatewayProxyFunction` if you're using API Gateway for your lambda.
+If you are creating a simple lambda (i.e. not a serverless application), you would not need to use this library (instead, follow the instructions here: https://aws.amazon.com/blogs/developer/announcing-amazon-lambda-runtimesupport/).
 
+This library is created to ease the pain of creating an AWS lambda serverless application with API gateway / ALB using custom runtime.
+
+First, you need to create an AWS Serverless Application (.NET core - C#) project via AWS Toolkit for Visual Studio. This creates a template for serverless application that you will then tweak to make it run with custom runtime.
+
+### Code Changes
+
+Change your `LambdaEntryPoint` class to derive from `Neo.Amazon.Lambda.CustomRuntime.ApplicationLoadBalancerFunction` if you're using ALB, or `Neo.Amazon.Lambda.CustomRuntime.APIGatewayProxyFunction` if you're using API Gateway for your lambda. 
+  
 e.g.
 ```
     public class LambdaEntryPoint : Neo.Amazon.Lambda.CustomRuntime.ApplicationLoadBalancerFunction
@@ -39,7 +47,7 @@ Then change your `LocalEntryPoint` class as follows.
     }
 ```
 
-## Bootstrap File
+### Bootstrap File
 
 Additionally, you will need to create a file called `bootstrap` in your dotnet project, and under File Properties, change Copy to Output Directory to `Copy if newer`.
 
@@ -58,5 +66,5 @@ In your `aws-lambda-tools-defaults.json` file, you'll need to add the following 
     "msbuild-parameters"   : "--self-contained true",
 ```
 
-After publishing your lambda, you'll need to change the Runtime settings of your lambda to `Custom Lambda`.
+After publishing your lambda, you'll need to change the **"Runtime"** settings of your lambda to ***"Custom Runtime"***. Function handler is not required for custom runtimes.
 
