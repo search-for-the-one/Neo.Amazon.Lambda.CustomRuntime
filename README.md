@@ -2,7 +2,7 @@
 
 This library allows you to easily create an AWS lambda serverless application with custom runtime with .net core.
 
-`dotnet add package Neo2.Amazon.Lambda.CustomRuntime`
+[Nuget package - Neo2.Amazon.Lambda.CustomRuntime](https://www.nuget.org/packages/Neo2.Amazon.Lambda.CustomRuntime/)
 
 ## Usage
 
