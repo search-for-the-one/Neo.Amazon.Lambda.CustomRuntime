@@ -59,6 +59,8 @@ Additionally, you will need to create a file called `bootstrap` in your dotnet p
 /var/task/{executable name of your project}
 ```
 
+*Note: Make sure your bootstrap file is Linux compatible -- i.e. no UTF BOM header, only LF line ending*
+
 In your `aws-lambda-tools-defaults.json` file, you'll need to add the following lines.
 
 ```
@@ -80,3 +82,14 @@ Alternatively, you can change the settings in the `serverless.template` file if 
                 ...
 ```
 
+### Building Manually
+
+If you are building the project manually, you can build with `dotnet publish`:
+
+`dotnet publish {name of your project}.csproj -c Release -r rhel.7.2-x64 --self-contained`
+
+Your published files will be in `bin/Release/netcoreapp2.1/rhel.7.2-x64/publish`. Before you zip the folder up, make sure bootstrap and the executable that bootstrap is calling have executable permissions (755).
+
+For example, to remove UTF BOM and normalise line endings without Dos2Unix followed by setting executable permissions, you can do the following.
+
+`sed -i 's/\r$//' bootstrap && sed -i '1s/^\xEF\xBB\xBF//' bootstrap && chmod 755 bootstrap && chmod 755 {name of executable}`
